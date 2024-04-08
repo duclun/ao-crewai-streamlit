@@ -1,0 +1,11 @@
+crewai
+streamlit 
+openai
+unstructured
+pyowm
+tools
+langchain-google-genai==1.0.1
+python-dotenv==1.0.1
+duckduckgo-search
+#pip -q install crewai[tools] decouple langchain-exa exa_py==1.0.7'
+langchain
