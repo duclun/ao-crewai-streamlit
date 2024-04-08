@@ -74,9 +74,9 @@ class TripCrew:
 
 
 if __name__ == "__main__":
-    icon("🏖️ VacAIgent")
+    icon("🏞️ Ami's AI Travel Agent")
 
-    st.subheader("Let AI agents plan your next vacation!",
+    st.subheader("Let Skynet plan your next vacation!",
                  divider="rainbow", anchor=False)
 
     import datetime

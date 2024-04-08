@@ -16,13 +16,15 @@ from utilities import getLLM
 
 
 
-def streamlit_callback(step_output):
+def streamlit_callback(step_output, agent_name: str = 'Generic call'):
     # This function will be called after each step of the agent's execution
     st.markdown("---")
+    st.markdown(f"in callback with: {agent_name}\n")
     for step in step_output:
         if isinstance(step, tuple) and len(step) == 2:
             action, observation = step
             if isinstance(action, dict) and "tool" in action and "tool_input" in action and "log" in action:
+                st.markdown(f"# Agent Name: {agent_name}")
                 st.markdown(f"# Action")
                 st.markdown(f"**Tool:** {action['tool']}")
                 st.markdown(f"**Tool Input** {action['tool_input']}")
@@ -69,7 +71,8 @@ class TripAgents():
             ],
             verbose=True,
             llm=getLLM("GOOGLE_API_KEY"),
-            step_callback=streamlit_callback,
+            #step_callback=streamlit_callback,
+            step_callback=lambda x: streamlit_callback(x, "city_selection_agent")
         )
 
     def local_expert(self):
@@ -84,7 +87,8 @@ class TripAgents():
             ],
             verbose=True,
             llm=getLLM("GOOGLE_API_KEY"),
-            step_callback=streamlit_callback,
+            #step_callback=streamlit_callback,
+            step_callback=lambda x: streamlit_callback(x, "local_expert")
         )
 
     def travel_concierge(self):
@@ -101,5 +105,6 @@ class TripAgents():
             ],
             verbose=True,
             llm=getLLM("GOOGLE_API_KEY"),
-            step_callback=streamlit_callback,
+            #step_callback=streamlit_callback,
+            step_callback=lambda x: streamlit_callback(x, "travel_concierge")
         )
