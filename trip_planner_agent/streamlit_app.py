@@ -93,7 +93,7 @@ if __name__ == "__main__":
         st.header("👇 Enter your trip details")
         with st.form("my_form"):
             location = st.text_input(
-                "Where are you currently located?", placeholder="San Mateo, CA")
+                "Where are you currently located?", placeholder="San Mateo, CA", value="New York City")
             cities = st.text_input(
                 "City and country are you interested in vacationing at?", placeholder="Bali, Indonesia")
             date_range = st.date_input(
@@ -103,7 +103,8 @@ if __name__ == "__main__":
                 format="MM/DD/YYYY",
             )
             interests = st.text_area("High level interests and hobbies or extra details about your trip?",
-                                     placeholder="2 adults who love swimming, dancing, hiking, and eating")
+                                     placeholder="2 adults who love swimming, dancing, hiking, and eating",
+                                     value="2 adults and a 12 years old who love sightseeing, beaches, hiking, wine and eating")
 
             submitted = st.form_submit_button("Submit")
 
